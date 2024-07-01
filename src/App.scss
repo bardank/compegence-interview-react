@@ -1,0 +1,9 @@
+$width: 20%;
+.sidebar {
+  width: $width;
+}
+
+.main-content {
+  padding-left: $width;
+  @apply min-h-screen;
+}
