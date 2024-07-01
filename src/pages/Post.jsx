@@ -35,7 +35,7 @@ const Post = () => {
         <h1 className="text-4xl text-white my-4 text-center">Post Info</h1>
         {loading && <p>Loading...</p>}
         <div className="">
-          {post && <PostCard post={post} />}
+          {post && <PostCard post={post} className="hover:scale-100" />}
           {comment && (
             <div className="bg-gray-800 p-4 m-4 rounded-md shadow-lg">
               <h4 className="py-4 text-xl">Comments</h4>
