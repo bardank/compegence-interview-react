@@ -14,16 +14,30 @@ function App() {
   const { posts, users, setPosts, setUsers } = useStore();
 
   useEffect(() => {
-    const fetchPostsAndUsers = async () => {
-      const [postsResponse, usersResponse] = await Promise.all([
-        getPosts(),
-        getUsers(),
-      ]);
-      setPosts(postsResponse.data);
-      setUsers(usersResponse.data);
-    };
     fetchPostsAndUsers();
   }, [setPosts, setUsers]);
+
+  const fetchPostsAndUsers = async () => {
+    const [postsResponse, usersResponse] = await Promise.all([
+      getPosts(),
+      getUsers(),
+    ]);
+    setUsers(usersResponse.data);
+    const modifiedPosts = [];
+    postsResponse.data.forEach((post, i) => {
+      const user = usersResponse.data.find((user) => user.id === post.userId);
+      modifiedPosts.push({
+        ...post,
+        userInfo: user,
+      });
+      console.log({
+        post,
+        user,
+      });
+      setPosts(modifiedPosts);
+    });
+  };
+
   return (
     <Router>
       <Dashbaordlayout>

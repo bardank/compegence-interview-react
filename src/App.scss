@@ -5,5 +5,9 @@ $width: 20%;
 
 .main-content {
   padding-left: $width;
-  @apply min-h-screen;
+  @apply min-h-screen ;
+}
+
+.topbar {
+  left: $width;
 }
