@@ -19,7 +19,10 @@ function Home() {
   const onSearchChange = (e) => {
     const val = e.target.value;
     setSearch(val);
-    if (!val) return;
+    if (!val) {
+      setFetchedPost(posts);
+      return;
+    }
     const filteredPosts = posts.filter((post) => {
       return post.userInfo.name.includes(val);
     });
